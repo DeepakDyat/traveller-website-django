@@ -153,8 +153,8 @@ USE_TZ = True
 
 # email authentication
 EMAIL_HOST="smtp.gmail.com"
-EMAIL_HOST_USER ="nickjack864@gmail.com"
-EMAIL_HOST_PASSWORD = "nickjack@98"
+EMAIL_HOST_USER = "EMAIL_HOST_USER"
+EMAIL_HOST_PASSWORD = "EMAIL_HOST_PASSWORD"
 EMAIL_PORT=587
 EMAIL_USE_TLS=True
 
@@ -181,7 +181,3 @@ LOGOUT_REDIRECT_URL='/'
 
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 CRISPY_TEMPLATE_PACK = "bootstrap5"
-
-
-# client id:   134775770122-qmr84nbnrrjv5cs5r0rajennvdpsg6dr.apps.googleusercontent.com
-# secret key --    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
