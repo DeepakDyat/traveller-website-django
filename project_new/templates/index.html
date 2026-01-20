@@ -1,0 +1,149 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {% block title %}<title>index</title>{% endblock title %}
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<!-- Popper JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<style>
+    body{
+    background-repeat:no-repeat;
+    background-size:cover;
+    }
+    .a1:hover{
+    border:10px solid rgba(0,0,0,0.5);
+    }
+</style>
+</head>
+
+<body background="https://images.unsplash.com/photo-1581235463650-c5f2aa793268?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTN8fHNoaW1sYXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60">
+<!---navbar ------>
+<nav class="navbar navbar-expand-md bg-dark navbar-dark">
+  <!-- Brand -->
+  <a class="navbar-brand" href="#" style="color:yellow;font-family:cursive;">TRAVE<span style="color:blue;font-family:cursive;">LLA</span></a>
+
+  <!-- Toggler/collapsibe Button -->
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <!-- Navbar links -->
+  <div class="collapse navbar-collapse" id="collapsibleNavbar">
+
+<center>
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'index' %}">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'login' %}">Login</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'register' %}">Register</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'enquiry' %}">Contact</a>
+      </li>
+        <li class="nav-item">
+        <a class="nav-link" href="{% url 'packs' %}">Packges</a>
+      </li>
+
+{% if user.is_authenticated %}
+
+
+       <li class="nav-item">
+        <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+      </li>
+
+
+      {% endif %}
+
+    </ul>
+</center>
+  </div>
+
+</nav>
+
+
+{% block body %}
+{% for message in messages %}
+<div class="container-fluid p-0">
+  <div class="alert {{ message.tags }} alert-dismissible" role="alert" >
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="True">&times;</span>
+    </button>
+    {{ message }}
+  </div>
+</div>
+{% endfor %}
+<!---navbar end--->
+
+<!----carousel---->
+
+<div id="demo" class="carousel slide" data-ride="carousel">
+
+  <!-- Indicators -->
+  <ul class="carousel-indicators">
+    <li data-target="#demo" data-slide-to="0" class="active"></li>
+    <li data-target="#demo" data-slide-to="1"></li>
+    <li data-target="#demo" data-slide-to="2"></li>
+  </ul>
+
+  <!-- The slideshow -->
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="https://images.unsplash.com/photo-1530789253388-582c481c54b0?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTl8fHRyYXZlbGxlcnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60" alt="Los Angeles" width="100%" height="500">
+    </div>
+    <div class="carousel-item">
+      <img src="https://media.istockphoto.com/photos/taj-mahal-and-its-reflection-in-pool-hdr-picture-id124688183?b=1&k=20&m=124688183&s=170667a&w=0&h=a6DAqHx9gaPE4VOKXpONvbVh0qlFw-umNBUjyFTyHQ0=" alt="Chicago" width="100%" height="500">
+    </div>
+    <div class="carousel-item">
+      <img src="https://images.unsplash.com/photo-1609948543911-7f01ff385be5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8c2hpbWxhfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60" alt="New York" width="100%" height="500">
+    </div>
+  </div>
+
+  <!-- Left and right controls -->
+  <a class="carousel-control-prev" href="#demo" data-slide="prev">
+    <span class="carousel-control-prev-icon"></span>
+  </a>
+  <a class="carousel-control-next" href="#demo" data-slide="next">
+    <span class="carousel-control-next-icon"></span>
+  </a>
+
+</div>
+<br>
+<!--carousel end--->
+
+<!--jumbotron--->
+
+<div class="jumbotron" style="background-color:rgba(0,0,0,0.4)">
+    <div class="row">
+        <div class="col-md-8">
+  <h1 style="color:blue; text-decoration:underline;">About Us</h1>
+  <p class="text-success" style="font-weight:bold;">A travel website is a website that provides travel reviews, trip fares, or a combination of both. Over 1.5 billion people book travel per year, 70% of which is done online.
+  The website can be used as a perfect platform to reach your customers with important information. If during a certain period, the travel agency is not taking any tour, then through their website they can convey these details to the customers to keep them always informed.</p>
+
+
+        </div>
+
+        <div class="col-md-4">
+<img class="a1" src="https://images.unsplash.com/photo-1506462945848-ac8ea6f609cc?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8dGFqbWFoYWx8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60" width="300" height="200">
+        </div>
+</div>
+</div>
+
+
+ {% endblock body %}
+<!-- end jumbotron--->
+</body>
+</html>

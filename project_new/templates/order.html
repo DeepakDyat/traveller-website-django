@@ -1,0 +1,121 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>order</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<!-- Popper JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <style>
+    body{
+    background-repeat:no-repeat;
+    background-size:cover;
+    }
+    .a1:hover{
+    border:10px solid rgba(0,0,0,0.5);
+    }
+</style>
+</head>
+<body background="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ3b2SuPaYYuICKAuDMmRu828tgU-voRXUXuA&usqp=CAU">
+<nav class="navbar navbar-expand-md bg-dark navbar-dark">
+  <!-- Brand -->
+  <a class="navbar-brand" href="#" style="color:yellow;font-family:cursive;">TRAVE<span style="color:blue;font-family:cursive;">LLA</span></a>
+
+  <!-- Toggler/collapsibe Button -->
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <!-- Navbar links -->
+  <div class="collapse navbar-collapse" id="collapsibleNavbar">
+
+<center>
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'index' %}">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'login' %}">Login</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'register' %}">Register</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'enquiry' %}">Contact</a>
+{% if user.is_authenticated %}
+       <li class="nav-item">
+        <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+      </li>
+      {% endif %}
+
+    </ul>
+</center>
+  </div>
+
+</nav>
+
+
+
+{% for message in messages %}
+<div class="container-fluid p-0">
+  <div class="alert {{ message.tags }} alert-dismissible" role="alert" >
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="True">&times;</span>
+    </button>
+    {{ message }}
+  </div>
+</div>
+{% endfor %}
+<!--order form-->
+
+<div class="container mt-5" style="background-color:rgba(0,0,0,0.5); width:400px; height:650px;">
+
+    <center><h3 style="font-family:cursive;text-shadow:2px 2px 8px blue;color:rgb(0,255,0);">Book Your Trip</h3></center>
+
+<form method="POST" style="color:white;font-family:cursive;" class="mt-5">
+    {% csrf_token %}
+{{form.as_p}}
+    <center><input type="submit" class="btn btn-success mt-4">
+    <a type="button" href="{% url 'payment'%}" class="btn btn-success mt-4">proceed for payment</a></center>
+
+</form>
+      </div>
+
+
+ <div class="container bg-dark mt-3">
+
+          <h2 style="color:white;">The Details of package selected by user:</h2>
+   <table class="table">
+                  <tbody>
+
+                  <tr>
+                      <th style="color:white;">Package ID</th>
+                      <td style="color:white;">{{obj.id}}</td>
+                  </tr>
+                  <tr>
+                      <th style="color:white;">Place Name</th>
+                      <td style="color:white;">{{obj.package_name}}</td>
+                  </tr>
+                  <tr>
+                      <th style="color:white;">Package Cost</th>
+                      <td style="color:white;">{{obj.package_price}}</td>
+
+				   <tr>
+                      <th style="color:white;">Package Category</th>
+                      <td style="color:white;">{{obj.package_cate}}</td>
+                  </tr>
+				  </tbody>
+   </table>
+  </div>
+
+</body>
+</html>

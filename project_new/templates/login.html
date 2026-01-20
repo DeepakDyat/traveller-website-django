@@ -1,0 +1,111 @@
+
+{% load socialaccount %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {% block title %}<title>login</title>{% endblock title %}
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<!-- Popper JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="{% static 'CSS/style1.css'%}">
+    <style>
+        body{
+        background-repeat:no-repeat;
+        background-size:cover;
+        }
+    </style>
+</head>
+<body background="https://images.unsplash.com/photo-1528701790053-56b0f31e4577?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTN8fGhkJTIwd2FsbHBhcGVyfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60">
+
+<nav class="navbar navbar-expand-md bg-dark navbar-dark">
+  <!-- Brand -->
+ <a class="navbar-brand" href="#" style="color:yellow;font-family:cursive;">TRAVE<span style="color:blue;font-family:cursive;">LLA</span></a>
+
+  <!-- Toggler/collapsibe Button -->
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <!-- Navbar links -->
+  <div class="collapse navbar-collapse" id="collapsibleNavbar">
+
+
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'index' %}">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'login' %}">Login</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'register' %}">Register</a>
+      </li>
+
+        <li class="nav-item">
+        <a class="nav-link" href="{% url 'enquiry' %}">Contact</a>
+      </li>
+         <li class="nav-item">
+        <a class="nav-link" href="{% url 'packs' %}">Packges</a>
+      </li>
+
+
+    </ul>
+  </div>
+
+</nav>
+
+{% block body %}
+{% for message in messages %}
+<div class="container-fluid p-0">
+  <div class="alert {{ message.tags }} alert-dismissible" role="alert" >
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="True">&times;</span>
+    </button>
+    {{ message }}
+  </div>
+</div>
+{% endfor %}
+<center>
+<div style="width:400px; height:100px;">
+<a class="btn btn-primary btn-block mt-5" href="{% provider_login_url 'google'%}">Login with Google</a></div></center>
+<div class="container mb-5 pt-5" style="background-color:rgba(0,0,0,0.5); height:350px; width:400px;">
+    <form method="POST" style="color:white;">
+        {% csrf_token %}
+  <div class="form-group">
+    <label for="exampleInputEmail1">Username</label>
+    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="username">
+
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">Password</label>
+    <input type="password" class="form-control" id="exampleInputPassword1" name="password">
+  </div>
+
+      <center><button type="submit" class="btn btn-success">Submit</button></center>
+      <div class="mt-4">
+        <center>
+        <div class="container">
+          Don't have an account?<a href="{% url 'register' %}" class="ml-2"> Sign Up</a><br>
+
+          Forgot password?<a href="{% url 'reset_password'%}"> Reset password</a>
+
+        </div>
+        </center>
+      </div>
+
+</form>
+
+</div>
+
+</body>
+{% endblock body%}
+</html>

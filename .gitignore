@@ -1,0 +1,20 @@
+# Virtual environments
+venv/
+.venv/
+
+# IDE folders
+.idea/
+.vscode/
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Database
+db.sqlite3
+
+# Environment variables
+.env
+
+# Extra files
+main.py
